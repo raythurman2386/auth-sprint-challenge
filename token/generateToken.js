@@ -6,9 +6,9 @@ const generateToken = (user) => {
     username: user.username
   }
 
-  const options = {
-    expiresIn = '1d'
-  }
+  // const options = {
+  //   expiresIn = '1d'
+  // }
 
   const secret = "something secret goes here"
 
