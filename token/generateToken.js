@@ -7,7 +7,7 @@ const generateToken = (user) => {
   }
 
   const options = {
-    expiresIn: '1d', // show other available options in the library's documentation
+    expiresIn: '1d',
   };
 
   const secret = "something secret goes here"
