@@ -4,7 +4,7 @@ const server = require('../api/server');
 
 describe("jokes tests", () => {
   test("get jokes", async () => {
-    const res = await supertest(server).get('/api/jokes')
+    const res = await supertest(server).get('/api/jokes') // .set() auth tokens in supertest
 
     expect(res.status).toBe(401)
   })
