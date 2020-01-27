@@ -2,10 +2,11 @@ const supertest = require('supertest');
 const server = require('../api/server');
 const db = require('../database/dbConfig');
 
+beforeEach(async () => {
+  await db('users').truncate();
+})
+
 test("register route", async () => {
-  beforeEach(async () => {
-    await db('users').truncate();
-  })
 
   const newUser = {
     "username": "test",
