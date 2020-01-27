@@ -5,6 +5,7 @@ const Jokes = () => {
   const [jokes, setJokes] = useState([])
 
   useEffect(() => {
+    // eslint-disable-next-line no-use-before-define
     axiosWithAuth()
       .get('http://localhost:3300/api/jokes')
       .then(res => setJokes(res.data))
@@ -27,7 +28,7 @@ function axiosWithAuth() {
   return axios.create({
     headers: {
       authorization: token,
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   })
 }
