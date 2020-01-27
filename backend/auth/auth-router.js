@@ -10,7 +10,7 @@ router.post('/register', async (req, res, next) => {
     user.password = hashPw;
 
     const [id] = await db('users').insert(user);
-    const newUser = await db('users').where({ id }).first();
+    const newUser = await db('users').where({ id }).select('id', 'username');
     return res.status(201).json(newUser)
   } catch (error) {
     next(error);
