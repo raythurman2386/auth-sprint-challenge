@@ -3,9 +3,9 @@ const server = require('../api/server');
 const db = require('../database/dbConfig');
 
 test("register route", async () => {
-  // beforeEach(async () => {
-  //   await db('users').truncate();
-  // })
+  beforeEach(async () => {
+    await db('users').truncate();
+  })
 
   const newUser = {
     "username": "test",
@@ -16,7 +16,8 @@ test("register route", async () => {
 
   expect(res.status).toBe(201);
   expect(res.type).toBe('application/json');
-  expect(res.body[0]).toBe(1)
+  expect(res.body.id).toBe(1)
+  expect(res.body.username).toMatch(/test/i)
 })
 
 test("register fail", async () => {
@@ -30,7 +31,7 @@ test("login", async () => {
     "username": "test",
     "password": "test"
   }
-
+  await supertest(server).post('/api/auth/register').send(user)
   const res = await supertest(server).post('/api/auth/login').send(user)
 
   expect(res.status).toBe(200)
