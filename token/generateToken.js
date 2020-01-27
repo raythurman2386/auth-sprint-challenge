@@ -6,13 +6,13 @@ const generateToken = (user) => {
     username: user.username
   }
 
-  // const options = {
-  //   expiresIn = '1d'
-  // }
+  const options = {
+    expiresIn: '1d', // show other available options in the library's documentation
+  };
 
   const secret = "something secret goes here"
 
-  return jwt.sign(payload, options, secret);
+  return jwt.sign(payload, secret, options);
 }
 
 module.exports = generateToken;
