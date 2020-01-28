@@ -13,6 +13,11 @@ server.use(cors());
 server.use(express.json());
 
 server.use('/api/auth', authRouter);
-server.use('/api/jokes', authenticate, jokesRouter);
+server.use('/api/jokes', authenticate(), jokesRouter);
+
+server.use((err, req, res, next) => {
+  // console.log(err)
+  return res.status(500).json(err)
+})
 
 module.exports = server;
